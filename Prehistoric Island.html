@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prehistoric Island</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: blanchedalmond;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            position: relative;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+        .product {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 200px;
+        }
+        .product img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .buy-button {
+            background: #007bff;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .buy-button:hover {
+            background: #0056b3;
+        }
+        
+        /* Hiệu ứng hạt khói nhỏ */
+        .smoke {
+            position: fixed;
+            top: -20px;
+            color: black;
+            font-size: 10px;
+            opacity: 0.6;
+            user-select: none;
+            pointer-events: none;
+            animation-name: smoke-fall;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+        
+        @keyframes smoke-fall {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 0.6;
+            }
+            50% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(100vh) scale(1.2);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Nơi Bán Đồ Của Prehistoric Island</h2>
+
+    <div class="container">
+        <div class="product">
+            <img src="DracoRace.png" alt="DracoRace">
+            <h3>DracoRace</h3>
+            <p>Giá: 10.000đ</p>
+            <a href="https://www.facebook.com/canbiet.ko.87502" class="buy-button">Mua ngay</a>
+        </div>
+        <div class="product">
+            <img src="Dino_Hood.png" alt="DinoHood">
+            <h3>DinoHood</h3>
+            <p>Giá: 30.000đ</p>
+            <a href="https://www.facebook.com/canbiet.ko.87502" class="buy-button">Mua ngay</a>
+        </div>
+        <div class="product">
+            <img src="Dragonstorm.png" alt="Dragonstorm">
+            <h3>Dragonstorm</h3>
+            <p>Giá: 20.000đ</p>
+            <a href="https://www.facebook.com/canbiet.ko.87502" class="buy-button">Mua ngay</a>
+        </div>
+        <div class="product">
+            <img src="Dragonheart.webp" alt="Dragonheart">
+            <h3>Dragonheart</h3>
+            <p>Giá: 10.000đ</p>
+            <a href="https://www.facebook.com/canbiet.ko.87502" class="buy-button">Mua ngay</a>
+        </div>
+    </div>
+
+    <audio autoplay loop>
+        <source src="PrehistoricIsland.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        function createSmoke() {
+            const smokeCount = 10; 
+            for (let i = 0; i < smokeCount; i++) {
+                let smoke = document.createElement("div");
+                smoke.innerHTML = "•"; // Hạt khói nhỏ màu đen
+                smoke.classList.add("smoke");
+                smoke.style.left = Math.random() * window.innerWidth + "px";
+                smoke.style.animationDuration = (Math.random() * 6 + 3) + "s"; // Rơi chậm hơn
+                smoke.style.opacity = Math.random() * 0.6 + 0.2;
+                smoke.style.fontSize = (Math.random() * 10 + 5) + "px"; // Kích thước nhỏ hơn
+                document.body.appendChild(smoke);
+
+                setTimeout(() => {
+                    smoke.remove();
+                }, 7000);
+            }
+        }
+        setInterval(createSmoke, 1500);
+    </script>
+
+</body>
+</html>
+
